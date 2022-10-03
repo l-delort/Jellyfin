@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin
+    user: uid:gid
+    network:
+      - jellyfin
+    ports:
+      - 80:80
+    volumes:
+      - /data/config:/config
+      - /data/cache:/cache
+      - /data/media:/media
+      - /data/media2:/media2:ro
+    restart: "unless-stopped"
+    # Optional - alternative address used for autodiscovery
+    environment:
+      #- JELLYFIN_PublishedServerUrl=http://example.com
+networks:
+  jellyfin:
