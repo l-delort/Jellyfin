@@ -14,13 +14,13 @@ if ! [ -x "$(command -v dos2unix)" ]; then
   apt-get update && apt-get install -y dos2unix
 fi
 
-if [ -f .env ]; then
-  dos2unix .env
-  source .env
-else
-  echo "ERROR : .env file not found"
-  exit 1
-fi
+#if [ -f .env ]; then
+#  dos2unix .env
+#  source .env
+#else
+#  echo "ERROR : .env file not found"
+#  exit 1
+#fi
 
 # docker & docker-compose version
 # Run "apt-cache madison docker-ce" to confirm the docker version.
@@ -33,7 +33,7 @@ install-deps() {
   apt-get update && apt-get install -y \
     curl wget htop dos2unix zip unzip jq \
     ca-certificates curl gnupg lsb-release \
-    nano vim emacs25 less tree \
+    nano vim emacs less tree \
     screen screenfetch ntpdate lvm2 \
     libpam-google-authenticator \
     apticron apt-listchanges \
