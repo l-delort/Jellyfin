@@ -25,7 +25,7 @@ fi
 # docker & docker-compose version
 # Run "apt-cache madison docker-ce" to confirm the docker version.
 DOCKER_VERSION=${DOCKER_VERSION:-20.10.18}
-DOCKER_COMPOSE_VERSION=${DOCKER_COMPOSE_VERSION:-2.11.2}
+DOCKER_COMPOSE_VERSION=${DOCKER_COMPOSE_VERSION:-1.29.2}
 
 
 # Install the dependency packages
