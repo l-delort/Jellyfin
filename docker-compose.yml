@@ -2,7 +2,7 @@ version: "3.9"
 services:
   jellyfin:
     container_name: jellyfin
-    image: jellyfin/jellyfin
+    image: ${IMAGE}
     network:
       - jellyfin
     ports:
@@ -16,8 +16,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'
-          memory: 1024M
+          cpus: ${CPU-LIMIT}
+          memory: ${MEMORY-LIMIT}
     # Optional - alternative address used for autodiscovery
     environment:
       #- JELLYFIN_PublishedServerUrl=http://example.com
