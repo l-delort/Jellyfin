@@ -14,13 +14,13 @@ if ! [ -x "$(command -v dos2unix)" ]; then
   apt-get update && apt-get install -y dos2unix
 fi
 
-#if [ -f .env ]; then
-#  dos2unix .env
-#  source .env
-#else
-#  echo "ERROR : .env file not found"
-#  exit 1
-#fi
+if [ -f .env ]; then
+  dos2unix .env
+  source .env
+else
+  echo "ERROR : .env file not found"
+  exit 1
+fi
 
 # docker & docker-compose version
 # Run "apt-cache madison docker-ce" to confirm the docker version.
@@ -120,21 +120,6 @@ PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033
 EOF
   fi
 
-  # ############ Initialize apticron.conf ############
-  # echo "Initialize apticron.conf"
-  # if [ ! -d "/etc/apticron" ]; then
-  #   mkdir -p "/etc/apticron"
-  # fi
-  # if [ -f "/etc/apticron/apticron.conf" ] && [ ! -f "/etc/apticron/apticron.conf.org" ]; then
-  #   mv /etc/apticron/apticron.conf /etc/apticron/apticron.conf.org
-  # fi
-  # yes | cp -rf common/conf/apticron.conf /etc/apticron/
-
-  # if [ -f "/etc/msmtprc" ] && [ ! -f "/etc/msmtprc.org" ]; then
-  #   mv /etc/msmtprc /etc/msmtprc.org
-  # fi
-  # yes | cp -rf common/conf/msmtprc /etc/
-
   # ############ Initialize nginx.conf ############
   # if [ "$(ls -A conf/nginx/*.conf)" ]; then
   #   echo "Initialize nginx.conf"
@@ -142,18 +127,6 @@ EOF
   #   sed -i "s/{{DOMAIN_NAME}}/$DOMAIN_NAME/g" conf/nginx/*.conf
   # fi
 
-  # ############ Check vm.max_map_count ############
-  # MAX_MAP_COUNT=262144
-  # if [ -n "$MAX_MAP_COUNT" -a -f /proc/sys/vm/max_map_count -a "$MAX_MAP_COUNT" -gt $(cat /proc/sys/vm/max_map_count) ]; then
-  #   echo "sysctl -q -w vm.max_map_count=$MAX_MAP_COUNT"
-  #   sysctl -q -w vm.max_map_count=$MAX_MAP_COUNT
-  # fi
-
-  # ############ Extra configurations ############
-  # if [ -f "configure.sh" ]; then
-  #   echo "Run a script for extra configurations"
-  #   ./configure.sh
-  # fi
 }
 
 start-containers() {
