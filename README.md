@@ -1,5 +1,6 @@
 # Jellyfin
 
+[Web site](https://jellyfin.org/)  
 
 The goal of the repository is to install docker, docker-compose ... and the container needed to have jellyfin  
 You can use the [.env](.env) in order to change the settings.
@@ -21,7 +22,7 @@ apt-get update && apt-get install -y git
 Clone the Git repository. Here we will clone on the folder /opt/jellyfin 
 
 ````
-git clone https://github.com/l-delort/pjellyfin.git /opt/jellyfin
+git clone https://github.com/l-delort/jellyfin.git /opt/jellyfin
 ````
 
 3 - Open the Git folder and launch the install script    
